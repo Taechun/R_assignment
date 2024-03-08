@@ -62,4 +62,8 @@ merged_teosinte <- merge(snp_data, trans_teosinte)
 missing data encoded by this symbol: ?
 ```{r}
 chr1_maize <- merged_maize[merged_maize$Chromosome == 1, ]
+chr1_maize_sorted <- chr1_maize[order(chr1_maize$Position), ]
+filtered_maize <- chr1_maize_sorted[1210:1256, ]
+filtered_maize_chr1_? <- filtered_maize[apply(filtered_maize[ , 1210:1256], 1, function(x) all (x == "?/?")), ]
+write.table(filtered_maize_chr1_?, file = "filtered_maize_chr1", sep = "\t", row.names = FALSE)
 ```
